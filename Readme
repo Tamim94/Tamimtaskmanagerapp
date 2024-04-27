@@ -1,0 +1,77 @@
+Task Manager
+
+
+Inspiré de ce que on a fait en classe mais l'application est totalement fonctionnelle , lorsque l'on crée un user le mot de passe
+est encrypté dans la base de données donc il faut se souveneir de son mot de passe lors de la creation pour pouvoir se login , on peux mettre a jour le user , le delete,
+et obtenir la liste de tout les users ( methode dans la suite de la documentation).
+Meme fonctionalité  pour les tasks mais bien evidemment il n'y aura pas de cryptage a la création car il n'est pas defini dessus et inutile dans la situation.
+
+Step 1
+Voici mon environnement:
+OS : Windows
+
+Editeur , IDE :
+Inteliji IDEA Ultimate 2024,
+
+Pour le BDD:
+Mongodb :    7.0.8,
+mongosh :    2.2.4,
+
+Test requete https et test API :
+Postman version desktop
+
+Une fois que vous aurez pull le projet de mon repo , Normalement il n'y aura rien
+a changer dans le code le npm  install  va installer toute les library lister dans le package.son (j'espere),
+si vous etes sur intelij l'ide proposera automatiquement d'installer les dependences lister dans le package.son .
+dans le cas contraire voici tout ce que j'ai installer (en cmd) en construisant le projet :
+npm i dotenv
+npm install express-validator
+npm install -g nodemon
+npm install --save-dev jest
+npm install bcryptjs
+
+Step 2
+Lancer mongodb connecter avec le port proposer par default ,
+Pour run le projet j'utilise toujours npm run dev
+(attention si le port 3000 est utilisé faite sur powershell :
+netstat -aon | Select-String 3000
+taskkill /f /pid numerodutask
+La premiere commande pour find le port utilisé et la deuxieme turnera off les service qui utilise ce port )
+
+Step 3 l'application normalement (j'espere) fonctionne pour vous
+Maintenant on lance postman
+
+Voici les routes ( a ecrire sur postman pour voir et interagire avec l'api :
+localhost:3000/     (faite un get pour voir si il capte le server local)
+
+routes de users :
+localhost:3000/users
+exemple de body raw a post ,get , put ,delete
+{
+    "fullName": "update1",
+    "job": "update",
+    "role": "admin",
+    "email": "update@test.com",
+    "password": "update"
+}
+pour supprimer et update (on utilise la meme methode que au dessus pour update!!)
+localhost:3000/users/id
+
+Pour tasks voici les routes:
+localhost:3000/tasks
+exemple ATTENTION LE USER DOIT ETRE CREE AVANT DONC JESPËRE QUE VOUS L AVEZ CREE de body x-www-form-urlencoded a post ,get , put ,delete pour tasks
+{
+userId     24567464555448
+dueDate    2024-12-31
+}
+
+
+
+Pour plus d'info  ou aide contatcez par teams  mail me sur tamim.golam-hossain@estiam.com
+
+
+
+
+
+
+
